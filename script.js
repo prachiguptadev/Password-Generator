@@ -20,15 +20,22 @@ let checkCount = 0;
 
 handleSlider();
 // set color wheel grayies
-
+setIndicator("#ccc");
 function handleSlider() {
   inputSlider.value = passwordLength;
   lengthDisplay.innerHTML = passwordLength;
+
+  const max = inputSlider.max;
+  const min = inputSlider.min;
+
+  inputSlider.style.backgroundSize =
+    ((passwordLength - min) * 100) / (max - min) + "% 100%";
 }
 
 function setIndicator(color) {
   indigator.style.backgroundColor = color;
   // added shadow
+  indigator.style.boxShadow = `0px 0px 12px 1px ${color}`;
 }
 
 function generateRandomInteger(min, max) {
